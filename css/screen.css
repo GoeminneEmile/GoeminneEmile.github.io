@@ -814,9 +814,11 @@ more padding on the right to avoid overlap
 .c-button {
     position: absolute;
     top: 33px;
-    right: 0px;
+    right: 5px;
   font-size: 16px;
   font-weight: 600;
+  overflow: hidden;
+  background-color: #fff;
   border-radius: var(--button-borderRadius, var(--global-borderRadius));
   color: var(--global-color-alpha);
   padding: calc(var(--global-baseline) * 0.5 - var(--button-borderWidth, var(--global-borderWidth))) var(--global-whitespace-md);
@@ -828,7 +830,6 @@ more padding on the right to avoid overlap
 
 .c-button:hover {
   border-color: var(--button-hover-borderColor, var(--global-color-alpha-dark));
-  background-color: var(--button-hover-backgroundColor, var(--global-color-alpha-light));
 }
 
 .c-button:focus {
@@ -1149,10 +1150,6 @@ more padding on the right to avoid overlap
     Utility classes align text or components
 */
 
-.u-align-text-center {
-  text-align: center;
-}
-
 .u-align-center {
   margin: 0 auto;
 }
@@ -1326,6 +1323,9 @@ more padding on the right to avoid overlap
   }
   .u-5-of-6-bp3 {
     width: 83.3333333333% !important;
+  }
+  .u-align-text-center {
+    text-align: center;
   }
 }
 
