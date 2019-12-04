@@ -524,7 +524,12 @@ text{
 
 .o-list {
   list-style: none;
-  padding: 0;
+  padding-left: 0px;
+}
+
+li span {
+  display: block;
+  font-size: 2rem;
 }
 
 /*
@@ -577,8 +582,37 @@ text{
 #COMPONENTS
 \*------------------------------------*/
 
+.c-list{
+    max-height: 180px;
+    overflow-y: scroll;
+}
+
+/* width & height */
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--global-color-alpha);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--global-color-beta);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 .c-app_main{
     padding-top: 25px;
+}
+
+.c-not-selected{
+    color:darkgrey;
 }
 
 /*
@@ -679,8 +713,6 @@ text{
   -moz-appearance: none;
   appearance: none;
   width: 100%;
-  border-radius: var(--input-borderRadius, var(--global-borderRadius));
-  border: var(--input-borderWidth, var(--global-borderWidth)) solid var(--input-borderColor, var(--global-input-borderColor));
   background-color: var(--input-backgroundColor, var(--global-input-backgroundColor));
   color: var(--global-input-color);
   font-family: inherit;
@@ -689,15 +721,17 @@ text{
   padding: calc(var(--global-baseline) * 1.5 - var(--global-borderWidth)) var(--global-whitespace-md);
   outline: none;
   transition: var(--input-transition);
+  border-radius: var(--input-borderRadius, var(--global-borderRadius));
+  border: var(--input-borderWidth, var(--global-borderWidth)) solid  var(--global-color-alpha);
 }
 
 .c-input:hover {
-  border-color: var(--input-hover-borderColor, var(--global-input-hover-borderColor));
+    border: var(--input-borderWidth, var(--global-borderWidth)) solid var(--input-borderColor, var(--global-input-borderColor));
 }
 
 .c-input:focus,
 .c-input:active {
-  border-color: var(--input-focus-borderColor, var(--global-input-focus-borderColor));
+  border-color: var(--input-borderColor, var(--global-input-borderColor));
   box-shadow: var(--global-input-focus-boxShadowSpread) var(--input-focus-boxShadowColor, var(--global-input-focus-boxShadowColor));
 }
 
@@ -798,13 +832,11 @@ more padding on the right to avoid overlap
 }
 
 .c-button:focus {
-  background-color: var(--button-focus-backgroundColor, var(--global-color-alpha));
   border-color: var(--button-focus-borderColor, var(--global-color-alpha-dark));
   box-shadow: var(--global-input-focus-boxShadowSpread) var(--button-focus-boxShadowColor, var(--global-input-focus-boxShadowColor));
 }
 
 .c-button:active {
-  background-color: var(--button-active-backgroundColor, var(--global-color-alpha-dark));
   border-color: var(--button-active-borderColor, var(--global-color-alpha-dark));
   box-shadow: var(--button-active-boxShadow, 0);
 }
@@ -1054,6 +1086,11 @@ more padding on the right to avoid overlap
 
 .u-pt-clear {
   padding-top: 0 !important;
+}
+
+.u-plr-clear {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
 .u-mb-clear {

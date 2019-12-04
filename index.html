@@ -4,19 +4,22 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Mars Today</title>
-        <meta name="description" content="This is my HTML5 boilerplate.">
+        <meta name="description" content="Weather for Mars Today">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="msapplication-TileColor" content="#3385FF">
-        <meta name="theme-color" content="#3385FF">
-
-        <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-        <link rel="manifest" href="site.webmanifest">
-        <link rel="mask-icon" href="safari-pinned-tab.svg" color="#3385FF">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ad4747">
+        <meta name="apple-mobile-web-app-title" content="MarsToday">
+        <meta name="application-name" content="MarsToday">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="theme-color" content="#fffdfd">
 
         <link rel="stylesheet" href="css/normalize.css">
 		<link rel="stylesheet" href="css/screen.css">
+
+        <script src="script/app.js"></script>
     </head>
     <body>
         <section class="o-row o-row--lg">
@@ -26,7 +29,7 @@
                     <text>Mars<span>Today</span>
                 </h1>
                 <div class="c-app_main">
-                    <div class="o-row">
+                    <div class="o-row u-plr-clear">
                         <div class="o-container">
                             <div class="c-dashboard">
                                 <div class="c-dashboard__item u-grid-span--6">
@@ -55,6 +58,15 @@
                                             </p>
 
                                     </form>
+                                    <div class="container">
+                                      <h4>Countdown to release:</h4>
+                                      <ul class="o-list o-layout">
+                                        <li class="u-1-of-4"><span id="days"></span>days</li>
+                                        <li class="u-1-of-4"><span id="hours"></span>Hours</li>
+                                        <li class="u-1-of-4"><span id="minutes"></span>Minutes</li>
+                                        <li class="u-1-of-4"><span id="seconds"></span>Seconds</li>
+                                      </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
