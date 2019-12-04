@@ -82,7 +82,6 @@ html {
 
 @media (min-width: 960px) {
     html {
-      font-size: 18px;
       line-height: 1.6;
     }
  }
@@ -279,12 +278,6 @@ text{
   padding: 24px 24px 0;
 }
 
-.o-row--login {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-}
-
 /* size modifiers */
 
 .o-row--lg {
@@ -410,7 +403,6 @@ text{
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
 }
 
 .o-layout__item {
@@ -973,6 +965,7 @@ more padding on the right to avoid overlap
     position: relative;
 }
 
+
 @media (min-width: 960px) {
     .c-app_main{
         padding-top: 136px;
@@ -980,6 +973,13 @@ more padding on the right to avoid overlap
     .c-dashboard{
         display: grid;
         grid-template-columns: repeat(12, 1fr);
+        grid-column-gap: 30px;
+        grid-row-gap: 30px;
+    }
+
+    .c-dashboard-sm{
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
         grid-column-gap: 30px;
         grid-row-gap: 30px;
     }
