@@ -159,6 +159,7 @@ h3 {
   font-size: 26px;
   line-height: calc(var(--global-baseline) * 4);
   margin: 0 0 var(--global-whitespace);
+  padding: 0 0 var(--global-whitespace);
 }
 
 h4,
@@ -1011,6 +1012,11 @@ more padding on the right to avoid overlap
 /*------------------------------------*\
 #UTILITIES
 \*------------------------------------*/
+
+
+.u-margin__0{
+    margin: 0;
+}
 
 /*
     Utilities: Grid span
