@@ -1,5 +1,5 @@
 /*Globale variabelen*/
-let daySelect, sols;
+let daySelect, sols, celciusOrFarenheit, toggle;
 let dataArray = [];
 let customHeaders = new Headers();
 customHeaders.append('Accept', 'application/json');
@@ -33,13 +33,19 @@ const LoadInfo = async function () {
         dataArray.push(sol);
     }
     for (i = 0; i < dataArray.length; i++) {
+
         if (dataArray[i] == dataArray[0]){
             html += `<h3 class="u-margin__0 js-daySelected">` +  dataArray[i] + `</h3>`;
             let number = dataArray[i];
-            htmltemp += `<h2 class="o-layout--align-center">` + Math.floor(data[number].AT.av) + `</h2>
+            htmltemp += `<h2 class="o-layout--align-center js-degrees">` + Math.floor(data[number].AT.av) + `</h2>
             <div class="o-layout o-layout--justify-space-between">
-                <p>C</p>
-                <p>F</p>
+            <div class="toggle-button-cover">
+                <div class="c-button b2 c-button__toggle js-toggle">
+                  <input type="checkbox" class="c-button__checkbox js-checked">
+                  <div class="c-button__knobs js-knob"></div>
+                  <div class="c-button__layer"></div>
+               </div>
+            </div>
             </div>
             <div class="o-layout o-layout--justify-center">
             `
@@ -154,8 +160,13 @@ const infoByDay = async function (day) {
             let number = dataArray[i];
             htmltemp += `<h2 class="o-layout--align-center">` + Math.floor(data[number].AT.av) + `</h2>
             <div class="o-layout o-layout--justify-space-between">
-                <p>C</p>
-                <p>F</p>
+            <div class="toggle-button-cover">
+                <div class="c-button b2 c-button__toggle js-toggle">
+                  <input type="checkbox" class="c-button__checkbox js-checked">
+                  <div class="c-button__knobs js-knob"></div>
+                  <div class="c-button__layer"></div>
+               </div>
+            </div>
             </div>
             <div class="o-layout o-layout--justify-center">
             `
@@ -264,33 +275,44 @@ const infoByDay = async function (day) {
 
 }
 
-const second = 1000,
-      minute = second * 60,
-      hour = minute * 60,
-      day = hour * 24;
-
-let countDown = new Date('Dec 20, 2019 00:00:00').getTime(),
-    x = setInterval(function() {
-
-      let now = new Date().getTime(),
-          distance = countDown - now;
-          if (document.getElementById('days')){
-                document.getElementById('days').innerText = Math.floor(distance / (day)),
-                document.getElementById('hours').innerText = Math.floor((distance % (day)) / (hour)),
-                document.getElementById('minutes').innerText = Math.floor((distance % (hour)) / (minute)),
-                document.getElementById('seconds').innerText = Math.floor((distance % (minute)) / second);
-            }
-
-    }, second)
-
+const celciusToFarenheit= function (temperature, clickedDegree) {
+    let x;
+    console.log("Clicked")
+  if (clickedDegree == "C") {
+    x = temperature * 9 / 5 + 32;
+    document.getElementById("f").value = Math.round(x);
+  } else {
+    x = (temperature -32) * 5 / 9;
+    document.getElementById("c").value = Math.round(x);
+  }
+};
 
 /*Event listeners*/
 
 const addEventListeners = function () {
+
     if(sols){
         sols.addEventListener('click', function (e) {
             infoByDay(e.target.innerText);
         });
+    }
+
+    if(document.querySelector(".js-checked")){
+        console.log("Toggle found");
+        document.querySelector(".js-checked").addEventListener('change', function (e) {
+            console.log("changed");
+        });
+        toggle.addEventListener('click', function (e) {
+            console.log("changed");
+            let degreesString;
+            degreesString = document.querySelector(".js-degrees").innerHTML;
+            let degrees = parseInt(degreesString, 10);
+
+        });
+
+    }
+    else {
+        console.log("No Toggle found");
     }
 };
 
@@ -314,7 +336,9 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log('Script loaded!');
     daySelect = document.querySelector('.js-daySelected');
     sols = document.querySelector('.js-sols');
+    toggle = document.querySelector(".js-checked");
+    celciusOrFarenheit = window.getComputedStyle(document.querySelector('.js-knob'), ':before').getPropertyValue('content');
     LoadInfo();
-    addEventListeners();
     marsChangeOnMedia();
+    addEventListeners();
 });
