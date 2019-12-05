@@ -206,45 +206,53 @@ const infoByDay = async function (day) {
                 </div>
                 `
             }
+            if (data[number].HWS != undefined){
+                htmlwind += `<h2>` + Math.floor(data[number].HWS.av) + `</h2>
+                <p>`+ data[number].WD[1].compass_point +`</p>
+                <div class="o-layout o-layout--justify-space-between">
+                    <div class="o-layout__item u-1-of-2">
+                        <p>Min</p>
+                    </div>
+                    <div class="o-layout__item u-1-of-2">
+                        <p>Max</p>
+                    </div>
+                </div>
+                <div class="o-layout o-layout--justify-space-between">
+                    <div class="o-layout__item u-1-of-2">
+                        <p>`+ Math.floor(data[number].HWS.mn) +` m/s</p>
+                    </div>
+                    <div class="o-layout__item u-1-of-2">
+                        <p>`+ Math.floor(data[number].HWS.mx) +` m/s</p>
+                    </div>
+                </div>`
+            }else{
+                htmlwind += `<p>No Data yet</p>`
+            }
+            if (data[number].PRE != undefined){
 
-            htmlwind += `<h2>` + Math.floor(data[number].HWS.av) + `</h2>
-            <p>`+ data[number].WD[1].compass_point +`</p>
-            <div class="o-layout o-layout--justify-space-between">
-                <div class="o-layout__item u-1-of-2">
-                    <p>Min</p>
+                htmlpres += `<h2>` + Math.floor(data[number].PRE.av) + `</h2>
+                <div class="o-layout o-layout--justify-space-between">
+                    <div class="o-layout__item u-1-of-2">
+                        <p>Min</p>
+                    </div>
+                    <div class="o-layout__item u-1-of-2">
+                        <p>Max</p>
+                    </div>
                 </div>
-                <div class="o-layout__item u-1-of-2">
-                    <p>Max</p>
-                </div>
-            </div>
-            <div class="o-layout o-layout--justify-space-between">
-                <div class="o-layout__item u-1-of-2">
-                    <p>`+ Math.floor(data[number].HWS.mn) +` m/s</p>
-                </div>
-                <div class="o-layout__item u-1-of-2">
-                    <p>`+ Math.floor(data[number].HWS.mx) +` m/s</p>
-                </div>
-            </div>`
-
-            htmlpres += `<h2>` + Math.floor(data[number].PRE.av) + `</h2>
-            <div class="o-layout o-layout--justify-space-between">
-                <div class="o-layout__item u-1-of-2">
-                    <p>Min</p>
-                </div>
-                <div class="o-layout__item u-1-of-2">
-                    <p>Max</p>
-                </div>
-            </div>
-            <div class="o-layout o-layout--justify-space-between">
-                <div class="o-layout__item u-1-of-2">
-                    <p>`+ Math.floor(data[number].PRE.mn) +` Pa</p>
-                </div>
-                <div class="o-layout__item u-1-of-2">
-                    <p>`+ Math.floor(data[number].PRE.mx) +` Pa</p>
-                </div>
-            </div>`
+                <div class="o-layout o-layout--justify-space-between">
+                    <div class="o-layout__item u-1-of-2">
+                        <p>`+ Math.floor(data[number].PRE.mn) +` Pa</p>
+                    </div>
+                    <div class="o-layout__item u-1-of-2">
+                        <p>`+ Math.floor(data[number].PRE.mx) +` Pa</p>
+                    </div>
+                </div>`
+            }
+            else{
+                htmlpres += `<p>No Data yet</p>`
+            }
         }else{
-            html += `<h3 class="c-not-selected u-margin__0 js-daySelected">` +  dataArray[i] + `</h3>`;
+                html += `<h3 class="c-not-selected u-margin__0 js-daySelected">` +  dataArray[i] + `</h3>`;
         }
     };
     if (document.querySelector('.js-sols')){

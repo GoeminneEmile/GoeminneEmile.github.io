@@ -995,15 +995,12 @@ more padding on the right to avoid overlap
     padding: 20px;
 }
 
-.c-absolute--full{
+.c-image-full__absolute {
     position: relative;
 }
 
 
-@media (min-width: 960px) {
-    .c-app_main{
-        padding-top: 136px;
-    }
+@media (min-width: 780px) {
     .c-dashboard{
         display: grid;
         grid-template-columns: repeat(12, 1fr);
@@ -1022,12 +1019,40 @@ more padding on the right to avoid overlap
         max-height: 100px;
     }
     .c-absolute--full{
+        position: relative;
+        max-height: 100vh;
+    }
+    .c-absolute--full img {
+      display: block;
+    }
+    .c-image-full__absolute{
         position: absolute;
         right:0px;
-        top:50px;
+        top: -620px;
         z-index: -1;
+        max-height: 100vh;
     }
  }
+
+ @media (min-width: 1200px) {
+     .c-app_main{
+         padding-top: 50px;
+     }
+
+     .c-image-full__absolute{
+         top: -610px;
+     }
+ }
+
+ @media (min-width: 1400px) {
+     .c-app_main{
+         padding-top: 136px;
+     }
+     .c-image-full__absolute{
+         top: -650px;
+     }
+ }
+
 
 
 /*------------------------------------*\
