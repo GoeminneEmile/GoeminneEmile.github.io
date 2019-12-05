@@ -297,12 +297,12 @@ const addEventListeners = function () {
 /* Media Queries */
 
 const marsChangeOnMedia = function () {
-    const mq = window.matchMedia( "(min-width: 960px)" );
+    const mq = window.matchMedia( "(min-width: 600px)" );
 
     if (mq.matches) {
-        // window width is at least 960px
+        // window width is at least 600px
     } else {
-        // window width is less than 960px
+        // window width is less than 600px
         console.log(document.querySelector(".js-src").src);
         document.querySelector(".js-src").src = "img/mars.png"
     }
