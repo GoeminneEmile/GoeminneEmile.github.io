@@ -12,11 +12,6 @@ const isValidEmailAddress = function(emailAddress) {
 	return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailAddress);
 };
 
-const isValidPassword = function(password) {
-	// Het wachtwoord moet minstens 6 karakters bevatten, verder niks.
-	return password.length > 1;
-};
-
 const isEmpty = function(fieldValue) {
 	return !fieldValue || !fieldValue.length;
 };
@@ -38,21 +33,6 @@ const doubleCheckEmailAddress = function() {
 	}
 };
 
-const doubleCheckPassword = function() {
-	if (isValidPassword(password.input.value)) {
-		// Stop met dit veld in de gaten te houden; het is in orde.
-		password.input.removeEventListener('input', doubleCheckPassword);
-		removeErrors(password);
-	} else {
-		// Stuk herhalende code.
-		if (isEmpty(password.input.value)) {
-			password.errorMessage.innerText = 'This field is required';
-		} else {
-			password.errorMessage.innerText = 'Invalid password';
-		}
-	}
-};
-
 const addErrors = function(formField) {
 	formField.field.classList.add('has-error');
 	formField.errorMessage.classList.add('is-visible');
@@ -70,13 +50,6 @@ const getDOMElements = function() {
 	email.errorMessage = email.label.querySelector('.js-email-error-message');
 	email.input = document.querySelector('.js-email-input');
 	email.field = document.querySelector('.js-email-field');
-
-	password.label = document.querySelector('.js-password-label');
-	password.errorMessage = password.label.querySelector(
-		'.js-password-error-message'
-	);
-	password.input = document.querySelector('.js-password-input');
-	password.field = document.querySelector('.js-password-field');
 
 	// Optional
 	// remember.label = document.querySelector('.js-remember-label');
@@ -114,33 +87,14 @@ const enableListeners = function() {
 		}
 	});
 
-	password.input.addEventListener('blur', function() {
-		if (!isValidPassword(password.input.value)) {
-			if (isEmpty(email.input.value)) {
-				email.errorMessage.innerText = 'This field is required';
-			}
-
-			addErrors(password);
-
-			// Gebruik een named function (doubleCheckPassword), om die er weer af te kunnen halen. Dit vermijd ook het dubbel toevoegen ervan.
-			password.input.addEventListener('input', doubleCheckPassword);
-		}
-	});
-
 	signInButton.addEventListener('click', function(e) {
 		// We gaan de form zelf versturen wanneer nodig.
 		e.preventDefault();
 
 		if (
-			isValidEmailAddress(email.input.value) &&
-			isValidPassword(password.input.value)
-		) {
+			isValidEmailAddress(email.input.value)) {
 			console.log('Form is good to go!');
 		} else {
-			// Stuk herhalende code...
-			addErrors(password);
-			password.input.addEventListener('input', doubleCheckPassword);
-
 			addErrors(email);
 			email.input.addEventListener('input', doubleCheckEmailAddress);
 		}

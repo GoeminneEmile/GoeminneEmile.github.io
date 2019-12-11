@@ -48,29 +48,26 @@
                                         <div class="c-dashboard__item u-grid-span--2">
                                             <p>Sols</p>
                                             <div class="js-sols c-list">
-                                                <h3 class="u-margin__0 js-daySelected">354</h3>
-                                                <h3>354</h3>
-                                                <h3>354</h3>
                                             </div>
                                         </div>
                                         <div class="c-dashboard__item u-grid-span--2">
                                             <p>Temperature</p>
                                             <div class="js-temperature">
                                                 <h2 class="o-layout--align-center js-degrees">-24</h2>
-                                                <div class="toggle-button-cover">
-                                                    <div class="c-button b2 c-button__toggle js-toggle">
-                                                        <input type="checkbox" class="c-button__checkbox js-checked">
-                                                        <div class="c-button__knobs js-knob"></div>
-                                                        <div class="c-button__layer"></div>
-                                                    </div>
-                                                </div>
+                                                <div class="c-radio js-switched">
+                                            		<input type="radio" class="js-switched-celcius" id="radio-one" name="celciusOrFarenheit" value="° C" checked/>
+                                            		<label for="radio-one">° C</label>
+                                            		<input type="radio" id="radio-two" name="celciusOrFarenheit" value="° F" />
+                                            		<label for="radio-two">° F</label>
+                                            	</div>
+                                                <div class="js-hotAndCold"></div>
                                             </div>
                                         </div>
                                         <div class="c-dashboard__item u-grid-span--2 u-align-text-center">
                                             <p>Wind Speed</p>
                                             <div class="js-wind">
-                                                <h2>12</h2>
-                                                <p>SSE</p>
+                                                <h2 class="js-windspeed">12</h2>
+                                                <p class="js-compaspoint">SSE</p>
                                                 <div class="o-layout o-layout--justify-space-between">
                                                     <div class="o-layout__item u-1-of-2">
                                                         <p>Min</p>
@@ -81,10 +78,10 @@
                                                 </div>
                                                 <div class="o-layout o-layout--justify-space-between">
                                                     <div class="o-layout__item u-1-of-2">
-                                                        <p>0.4</p>
+                                                        <p class="js-wind_min">0.4</p>
                                                     </div>
                                                     <div class="o-layout__item u-1-of-2">
-                                                        <p>40.0</p>
+                                                        <p class="js-wind_max">40.0</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -92,7 +89,7 @@
                                         <div class="c-dashboard__item u-grid-span--2">
                                             <p>Pressure</p>
                                             <div class="js-pres">
-                                                <h2>688</h2>
+                                                <h2 class="js-pressure">688</h2>
                                                 <div class="o-layout o-layout--justify-space-between">
                                                     <div class="o-layout__item u-1-of-2">
                                                         <p>Min</p>
@@ -103,10 +100,10 @@
                                                 </div>
                                                 <div class="o-layout o-layout--justify-space-between">
                                                     <div class="o-layout__item u-1-of-2">
-                                                        <p>0.4</p>
+                                                        <p class="js-press_min">0.4</p>
                                                     </div>
                                                     <div class="o-layout__item u-1-of-2">
-                                                        <p>40.0</p>
+                                                        <p class="js-press_max">40.0</p>
                                                     </div>
                                                 </div>
                                             </div>
