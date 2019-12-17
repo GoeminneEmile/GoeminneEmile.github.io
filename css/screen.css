@@ -80,7 +80,14 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
+body{
+    padding-bottom: 50px;
+}
+
 @media (min-width: 960px) {
+    body{
+        padding-bottom: 0px;
+    }
     html {
       line-height: 1.6;
     }
@@ -1107,7 +1114,7 @@ more padding on the right to avoid overlap
     background-size:contain;
     background-position:center;
      z-index: -1;
-     width: 50%;
+     width: 100%;
      height: 20vh;
 }
 
