@@ -72,7 +72,7 @@ const getDOMElements = function() {
 };
 
 const enableListeners = function() {
-	email.input.addEventListener('blur', function() {
+	email.input.addEventListener('input', function() {
 		if (!isValidEmailAddress(email.input.value)) {
 			if (isEmpty(email.input.value)) {
 				email.errorMessage.innerText = 'This field is required';
@@ -96,7 +96,7 @@ const enableListeners = function() {
 			console.log('Form is good to go!');
 		} else {
 			addErrors(email);
-			email.input.addEventListener('input', doubleCheckEmailAddress);
+			email.input.addEventListener('oninput', doubleCheckEmailAddress);
 		}
 	});
 };

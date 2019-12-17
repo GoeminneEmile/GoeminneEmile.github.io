@@ -100,6 +100,8 @@ const LoadInfo = async function(){
             let pressure = document.querySelector(".js-pressure")
             let hotOrCold = document.querySelector(".js-hotAndCold")
 
+
+
             windMin.textContent = Math.round(data[newnumber].HWS.mn) + "m/s"
             windMax.textContent = Math.round(data[newnumber].HWS.mx) + "m/s"
             windSpeed.textContent = Math.round(data[newnumber].HWS.av)
@@ -117,7 +119,6 @@ const LoadInfo = async function(){
             }
             i = 0;
             console.log(i);
-
             solItem.addEventListener('change', function(i){
                 console.log(i.srcElement)
                 let newnumber = i.srcElement.id
@@ -244,26 +245,11 @@ const addEventListeners = function () {
         });
 };
 
-/* Media Queries */
-
-const marsChangeOnMedia = function () {
-    const mq = window.matchMedia( "(min-width: 600px)" );
-
-    if (mq.matches) {
-        // window width is at least 600px
-    } else {
-        // window width is less than 600px
-        console.log(document.querySelector(".js-src").src);
-        document.querySelector(".js-src").src = "img/mars.png"
-    }
-}
-
 /* INIT */
 
 document.addEventListener('DOMContentLoaded',async function () {
     console.log('Script loaded!');
     celciusOrFarenheit = document.getElementsByName('celciusOrFarenheit');
     await LoadInfo();
-    marsChangeOnMedia();
     addEventListeners();
 });

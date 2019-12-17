@@ -265,8 +265,327 @@ text{
 }
 
 /*------------------------------------*\
+#OBJECTS
+\*------------------------------------*/
+
+/*
+    Objects: Row
+    ---
+    Creates a horizontal row that stretches the viewport and adds padding around children
+*/
+
+.o-row {
+  position: relative;
+  padding: 24px 24px 0;
+}
+
+/* size modifiers */
+
+.o-row--lg {
+  padding-top: 48px;
+  padding-bottom: 24px;
+}
+
+.o-row--xl {
+  padding-top: 72px;
+  padding-bottom: 48px;
+}
+
+@media (min-width: 768px) {
+  .o-row {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+}
+
+@media (min-width: 992px) {
+  .o-row--xl {
+    padding-top: 96px;
+    padding-bottom: 72px;
+  }
+}
+
+/*
+    Objects: Container
+    ---
+    Creates a horizontal container that sets de global max-width
+*/
+
+.o-container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 79.5em; /* 79.5 * 16px = 1272 */
+  width: 100%;
+}
+
+/*
+    Objects: Row
+    ---
+    Creates a horizontal row that stretches the viewport and adds padding around children
+*/
+
+.o-row {
+  position: relative;
+  padding: var(--global-whitespace) var(--global-whitespace) 0;
+}
+
+.o-row--login {
+  min-height: 100vh;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -ms-align-items: center;
+  align-items: center;
+}
+
+/* size modifiers */
+
+.o-row--lg {
+  padding-top: var(--global-whitespace-lg);
+  padding-bottom: var(--global-whitespace);
+}
+
+@media (min-width: 768px) {
+  .o-row {
+    padding-left: var(--global-whitespace-lg);
+    padding-right: var(--global-whitespace-lg);
+  }
+}
+
+/*
+    Objects: Container
+    ---
+    Creates a horizontal container that sets de global max-width
+*/
+
+.o-container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 79.5em; /* 79.5 * 16px = 1272 */
+  width: 100%;
+}
+
+/*
+    Objects: section
+    ---
+    Creates vertical whitespace between adjacent sections inside a row
+*/
+
+.o-section {
+  position: relative;
+}
+
+.o-section + .o-section {
+  padding-top: var(--global-whitespace);
+}
+
+@media (min-width: 768px) {
+  .o-section--lg + .o-section--lg,
+  .o-section--xl + .o-section--xl {
+    padding-top: var(--global-whitespace-lg);
+  }
+}
+
+@media (min-width: 992px) {
+  .o-section--xl + .o-section--xl {
+    padding-top: var(--global-whitespace-xxl);
+  }
+}
+
+/*
+    Objects: Layout
+    ---
+    The layout object provides us with a column-style layout system. This object
+    contains the basic structural elements, but classes should be complemented
+    with width utilities
+*/
+
+.o-layout {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.o-layout__item {
+  width: 100%;
+}
+
+/* gutter modifiers, these affect o-layout__item too */
+
+.o-layout--gutter {
+  margin: 0 -12px;
+}
+
+.o-layout--gutter > .o-layout__item {
+  padding: 0 12px;
+}
+
+.o-layout--gutter-sm {
+  margin: 0 -6px;
+}
+
+.o-layout--gutter-sm > .o-layout__item {
+  padding: 0 6px;
+}
+
+.o-layout--gutter-lg {
+  margin: 0 calc(var(--global-whitespace) * -1);
+}
+
+.o-layout--gutter-lg > .o-layout__item {
+  padding: 0 var(--global-whitespace);
+}
+
+.o-layout--gutter-xl {
+  margin: 0 calc(var(--global-whitespace-lg) * -1);
+}
+
+.o-layout--gutter-xl > .o-layout__item {
+  padding: 0 var(--global-whitespace-lg);
+}
+
+/* reverse horizontal row modifier */
+
+.o-layout--row-reverse {
+  flex-direction: row-reverse;
+}
+
+/* Horizontal alignment modifiers*/
+
+.o-layout--justify-start {
+  justify-content: flex-start;
+}
+
+.o-layout--justify-end {
+  justify-content: flex-end;
+}
+
+.o-layout--justify-center {
+  justify-content: center;
+}
+
+.o-layout--justify-space-around {
+  justify-content: space-around;
+}
+
+.o-layout--justify-space-evenly {
+  justify-content: space-evenly;
+}
+
+.o-layout--justify-space-between {
+  justify-content: space-between;
+}
+
+/* Vertical alignment modifiers */
+
+.o-layout--align-start {
+  align-items: flex-start;
+}
+
+.o-layout--align-end {
+  align-items: flex-end;
+}
+
+.o-layout--align-center {
+  align-items: center;
+}
+
+.o-layout--align-baseline {
+  align-items: baseline;
+}
+
+/* Vertical alignment modifiers that only work if there is one than one flex item */
+
+.o-layout--align-content-start {
+  align-content: start;
+}
+
+.o-layout--align-content-end {
+  align-content: end;
+}
+
+.o-layout--align-content-center {
+  align-content: center;
+}
+
+.o-layout--align-content-space-around {
+  align-content: space-around;
+}
+
+.o-layout--align-content-space-between {
+  align-content: space-between;
+}
+
+/*
+    Object: Button reset
+    ---
+    Small button reset object
+*/
+
+.o-button-reset {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  background: transparent;
+
+  /* inherit font & color from ancestor */
+  color: inherit;
+  font: inherit;
+
+  /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+  line-height: normal;
+
+  /* Corrects font smoothing for webkit */
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+
+  /* Corrects inability to style clickable `input` types in iOS */
+  -webkit-appearance: none;
+}
+
+
+/*------------------------------------*\
 #COMPONENTS
 \*------------------------------------*/
+
+/*
+    Component: Button
+    ---
+    Class to put on form buttons or
+*/
+
+.c-button {
+    position: absolute;
+    top:26px;
+    right: 1px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 0 var(--global-borderRadius) var(--global-borderRadius) 0;
+  border: 1px solid var(--button-borderColor);
+  background-color: var(--global-color-beta);
+  color: var(--global-color-alpha);
+  line-height: calc(var(--global-baseline) * 3);
+  padding: calc(var(--global-baseline) * 1.25) var(--global-whitespace-md);
+  outline: none;
+  box-shadow: var(--button-boxShadow, 0);
+  transition: all var(--global-transitionTiming-alpha) var(--global-transitionEasing-out);
+}
+
+.c-button:hover {
+    background-color: white;
+    color: var(--global-color-beta);
+}
+
+.c-button:focus {
+    color: var(--global-color-alpha);
+}
+
+.c-button:active {
+    color: var(--global-color-alpha);
+}
+
 
 .c-daySelected{
   font-size: 26px;
@@ -276,6 +595,7 @@ text{
 	display: flex;
 	margin-bottom: 36px;
 	overflow: hidden;
+    cursor: pointer;
 }
 
 .c-radio input {
@@ -773,15 +1093,34 @@ more padding on the right to avoid overlap
 */
 
 .c-dashboard__item{
-    padding: 20px;
+    padding: 20px 0px;
 }
 
 .c-image-full__absolute {
     position: relative;
 }
 
+.c-absolute--full{
+    position: relative;
+    background-image: url('../img/mars.png');
+    background-repeat:no-repeat;
+    background-size:contain;
+    background-position:center;
+     z-index: -1;
+     width: 50%;
+     height: 20vh;
+}
+
 
 @media (min-width: 600px) {
+    .c-absolute--full{
+        position: absolute;
+        top: 150px;
+        right: 0;
+        background-image: url('../img/mars-2.png');
+        background-position: right;
+        height: 70vh;
+    }
     .c-dashboard{
         display: grid;
         grid-template-columns: repeat(8, 1fr);
@@ -795,51 +1134,20 @@ more padding on the right to avoid overlap
         grid-column-gap: 30px;
         grid-row-gap: 30px;
     }
-    .c-absolute--full{
-        position: relative;
-        max-height: 100vh;
-    }
-    .c-absolute--full img {
-      display: block;
-      width: 50%
-    }
-    .c-image-full__absolute{
-        position: absolute;
-        right:0px;
-        top: -700px;
-        z-index: -1;
-        max-height: 100vh;
-    }
-    .c-image-full__absolute-app{
-        top: -1100px;
-    }
  }
 
  @media (min-width: 800px) {
-     .c-image-full__absolute{
-         top: -780px;
-     }
-     .c-image-full__absolute-app{
-         top: -1100px;
-     }
- }
-
- @media (min-width: 950px) {
      .c-absolute--full{
-         width: 100%;
+        height: 80vh;
+        top: 100px;
      }
-     .c-image-full__absolute{
-         top: -800px;
-     }
-     .c-absolute--full img {
-       width: 35%
-     }
-     .c-image-full__absolute-app{
-         top: -1100px;
-     }
- }
 
+ }
  @media (min-width: 1200px) {
+     .c-absolute--full{
+        height: 100vh;
+        top: 0px;
+     }
      .c-app_main{
          padding-top: 50px;
      }
@@ -847,9 +1155,6 @@ more padding on the right to avoid overlap
          max-height: 100px;
      }
 
-     .c-image-full__absolute{
-         top: -610px;
-     }
      .c-dashboard{
          display: grid;
          grid-template-columns: repeat(12, 1fr);
@@ -865,12 +1170,6 @@ more padding on the right to avoid overlap
      }
  }
 
- @media (min-width: 1400px) {
-     .c-image-full__absolute{
-         top: -620px;
-     }
- }
-
  .c-radio:checked + .c-daySelected {
   color: white
 }
@@ -881,258 +1180,6 @@ more padding on the right to avoid overlap
 
 .o-hidden{
   display:none;
-}
-
-/*------------------------------------*\
-#OBJECTS
-\*------------------------------------*/
-
-/*
-    Objects: Row
-    ---
-    Creates a horizontal row that stretches the viewport and adds padding around children
-*/
-
-.o-row {
-  position: relative;
-  padding: 24px 24px 0;
-}
-
-/* size modifiers */
-
-.o-row--lg {
-  padding-top: 48px;
-  padding-bottom: 24px;
-}
-
-.o-row--xl {
-  padding-top: 72px;
-  padding-bottom: 48px;
-}
-
-@media (min-width: 768px) {
-  .o-row {
-    padding-left: 48px;
-    padding-right: 48px;
-  }
-}
-
-@media (min-width: 992px) {
-  .o-row--xl {
-    padding-top: 96px;
-    padding-bottom: 72px;
-  }
-}
-
-/*
-    Objects: Container
-    ---
-    Creates a horizontal container that sets de global max-width
-*/
-
-.o-container {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 79.5em; /* 79.5 * 16px = 1272 */
-  width: 100%;
-}
-
-/*
-    Objects: Row
-    ---
-    Creates a horizontal row that stretches the viewport and adds padding around children
-*/
-
-.o-row {
-  position: relative;
-  padding: var(--global-whitespace) var(--global-whitespace) 0;
-}
-
-.o-row--login {
-  min-height: 100vh;
-  display: -webkit-flex;
-  display: -ms-flex;
-  display: flex;
-  -ms-align-items: center;
-  align-items: center;
-}
-
-/* size modifiers */
-
-.o-row--lg {
-  padding-top: var(--global-whitespace-lg);
-  padding-bottom: var(--global-whitespace);
-}
-
-@media (min-width: 768px) {
-  .o-row {
-    padding-left: var(--global-whitespace-lg);
-    padding-right: var(--global-whitespace-lg);
-  }
-}
-
-/*
-    Objects: Container
-    ---
-    Creates a horizontal container that sets de global max-width
-*/
-
-.o-container {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 79.5em; /* 79.5 * 16px = 1272 */
-  width: 100%;
-}
-
-/*
-    Objects: section
-    ---
-    Creates vertical whitespace between adjacent sections inside a row
-*/
-
-.o-section {
-  position: relative;
-}
-
-.o-section + .o-section {
-  padding-top: var(--global-whitespace);
-}
-
-@media (min-width: 768px) {
-  .o-section--lg + .o-section--lg,
-  .o-section--xl + .o-section--xl {
-    padding-top: var(--global-whitespace-lg);
-  }
-}
-
-@media (min-width: 992px) {
-  .o-section--xl + .o-section--xl {
-    padding-top: var(--global-whitespace-xxl);
-  }
-}
-
-/*
-    Objects: Layout
-    ---
-    The layout object provides us with a column-style layout system. This object
-    contains the basic structural elements, but classes should be complemented
-    with width utilities
-*/
-
-.o-layout {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.o-layout__item {
-  width: 100%;
-}
-
-/* gutter modifiers, these affect o-layout__item too */
-
-.o-layout--gutter {
-  margin: 0 -12px;
-}
-
-.o-layout--gutter > .o-layout__item {
-  padding: 0 12px;
-}
-
-.o-layout--gutter-sm {
-  margin: 0 -6px;
-}
-
-.o-layout--gutter-sm > .o-layout__item {
-  padding: 0 6px;
-}
-
-.o-layout--gutter-lg {
-  margin: 0 calc(var(--global-whitespace) * -1);
-}
-
-.o-layout--gutter-lg > .o-layout__item {
-  padding: 0 var(--global-whitespace);
-}
-
-.o-layout--gutter-xl {
-  margin: 0 calc(var(--global-whitespace-lg) * -1);
-}
-
-.o-layout--gutter-xl > .o-layout__item {
-  padding: 0 var(--global-whitespace-lg);
-}
-
-/* reverse horizontal row modifier */
-
-.o-layout--row-reverse {
-  flex-direction: row-reverse;
-}
-
-/* Horizontal alignment modifiers*/
-
-.o-layout--justify-start {
-  justify-content: flex-start;
-}
-
-.o-layout--justify-end {
-  justify-content: flex-end;
-}
-
-.o-layout--justify-center {
-  justify-content: center;
-}
-
-.o-layout--justify-space-around {
-  justify-content: space-around;
-}
-
-.o-layout--justify-space-evenly {
-  justify-content: space-evenly;
-}
-
-.o-layout--justify-space-between {
-  justify-content: space-between;
-}
-
-/* Vertical alignment modifiers */
-
-.o-layout--align-start {
-  align-items: flex-start;
-}
-
-.o-layout--align-end {
-  align-items: flex-end;
-}
-
-.o-layout--align-center {
-  align-items: center;
-}
-
-.o-layout--align-baseline {
-  align-items: baseline;
-}
-
-/* Vertical alignment modifiers that only work if there is one than one flex item */
-
-.o-layout--align-content-start {
-  align-content: start;
-}
-
-.o-layout--align-content-end {
-  align-content: end;
-}
-
-.o-layout--align-content-center {
-  align-content: center;
-}
-
-.o-layout--align-content-space-around {
-  align-content: space-around;
-}
-
-.o-layout--align-content-space-between {
-  align-content: space-between;
 }
 
 /*
@@ -1149,35 +1196,6 @@ more padding on the right to avoid overlap
 li span {
   display: block;
   font-size: 2rem;
-}
-
-/*
-    Object: Button reset
-    ---
-    Small button reset object
-*/
-
-.o-button-reset {
-  border: none;
-  margin: 0;
-  padding: 0;
-  width: auto;
-  overflow: visible;
-  background: transparent;
-
-  /* inherit font & color from ancestor */
-  color: inherit;
-  font: inherit;
-
-  /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
-  line-height: normal;
-
-  /* Corrects font smoothing for webkit */
-  -webkit-font-smoothing: inherit;
-  -moz-osx-font-smoothing: inherit;
-
-  /* Corrects inability to style clickable `input` types in iOS */
-  -webkit-appearance: none;
 }
 
 /*
